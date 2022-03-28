@@ -3,7 +3,6 @@ name: Upload Build
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 6 * * *"
 
 jobs:
   upload-build:
@@ -21,7 +20,7 @@ jobs:
           pip3 install meson
           brew install ninja
           bundle install
-          git config user.name github-actions[bot]
+          git config /aaduo01/ish
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
       - name: Fastlane
