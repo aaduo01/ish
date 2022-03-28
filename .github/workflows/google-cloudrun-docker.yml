@@ -1,0 +1,13 @@
+# This workflow build and push a Docker container to Google Artifact Registry and deploy it on Cloud Run when a commit is pushed to the master branch
+name: Deploy Site
+on:
+  release:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Trigger Deploy
+      run: curl -d {} $NETLIFY_DEPLOY_HOOK
+      env:
+        NETLIFY_DEPLOY_HOOK: ${{ secrets.NETLIFY_DEPLOY_HOOK }}
