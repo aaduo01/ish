@@ -2,7 +2,7 @@ name: Upload Build
 
 on:
   workflow_dispatch:
-  schedule:"0 6 * * *"
+  schedule:"0 3 * * *"
 
 jobs:
   upload-build:
