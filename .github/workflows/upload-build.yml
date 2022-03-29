@@ -2,7 +2,8 @@ name: Upload Build
 
 on:
   workflow_dispatch:
-  schedule:"0 3 * * *"
+  schedule:
+    - cron: "0 6 * * *"
 
 jobs:
   upload-build:
@@ -20,9 +21,8 @@ jobs:
           pip3 install meson
           brew install ninja
           bundle install
-          git config /aaduo01/ish
+          git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-
       - name: Fastlane
         timeout-minutes: 720
         run: script fastlane.log bundle exec fastlane upload_build
@@ -43,10 +43,8 @@ jobs:
             iSH.ipa
             iSH.app.dSYM.zip
             iSH-appstore.app.dSYM.zip
-
       - uses: actions/upload-artifact@v2
         if: always()
         with:
           name: Fastlane Logs
           path: fastlane.log
-
